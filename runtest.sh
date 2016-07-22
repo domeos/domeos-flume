@@ -1,0 +1,4 @@
+## test, mount local /opt/chinshinfeeng/log to /opt/outlog/logdir1 in container, and collect and send log to kafka
+#docker run -d -v /opt/chinshinfeeng/log:/opt/outlog/logdir1 -e DOMEOS_FLUME_LOGCOUNT=1 -e DOMEOS_FLUME_LOGFILE1=/opt/outlog/logdir1/log -e DOMEOS_FLUME_BROKER=10.16.42.221:9292,10.16.42.222:9292 -e DOMEOS_FLUME_TOPIC1=testtopic --name csfflumetest 10.11.150.76:5000/sohucs/flumecsf1:1.0 
+
+docker run -d -v /opt/chinshinfeeng/log:/opt/outlog/logdir1 -e DOMEOS_FLUME_LOG_COUNT=1 -e DOMEOS_FLUME_LOGFILE1=/opt/outlog/logdir1/log -e DOMEOS_FLUME_BROKER=10.16.42.221:9292,10.16.42.222:9292 -e DOMEOS_FLUME_TOPIC1=testtopic -e DOMEOS_CLEAN_LOG_COUNT=1 -e DOMEOS_CLEAN_LOGFILE1=/opt/outlog/logdir1/log -e DOMEOS_CLEAN_EXPIRETIME1=60 --name csfflumetest 10.11.150.76:5000/sohucs/flumecsf1:2.0 
